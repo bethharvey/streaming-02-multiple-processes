@@ -5,3 +5,160 @@ This will clear the console output.
 Run the file once while the tasks are short. 
 
 Copy and paste the terminal results (when task_duration is 0) here.
+
+(base) macbeth@beths-air streaming-02-multiple-processes % python3 -m .venv venv
+/Library/Frameworks/Python.framework/Versions/3.11/bin/python3: Relative module names not supported
+(base) macbeth@beths-air streaming-02-multiple-processes % python3 -m venv .venv
+(base) macbeth@beths-air streaming-02-multiple-processes % source venv/bin/activate
+source: no such file or directory: venv/bin/activate
+(base) macbeth@beths-air streaming-02-multiple-processes % source .venv/bin/activate
+(.venv) (base) macbeth@beths-air streaming-02-multiple-processes % python3 about.py
+
+======================================================================
+======================================================================
+ Welcome to the Python Debugging Information Utility ABOUT.PY
+ Date and Time: 2023-08-28 at 05:18 PM
+ Operating System: posix Darwin 22.5.0
+ System Architecture: 64bit
+ Number of CPUs: 8
+ Machine Type: arm64
+ Python Version: 3.11.2
+ Python Build Date and Compiler: v3.11.2:878ead1ac1 with Feb  7 2023 10:02:41
+ Python Implementation: CPython
+ Active pip environment: None
+ Path to Interpreter:         /Users/macbeth/Documents/Streaming Data/Module 2/streaming-02-multiple-processes/.venv/bin/python3
+ Path to virtual environment: /Users/macbeth/Documents/Streaming Data/Module 2/streaming-02-multiple-processes/.venv
+ Current Working Directory:   /Users/macbeth/Documents/Streaming Data/Module 2/streaming-02-multiple-processes
+ Path to source directory:    /Users/macbeth/Documents/Streaming Data/Module 2/streaming-02-multiple-processes
+ Path to script file:         /Users/macbeth/Documents/Streaming Data/Module 2/streaming-02-multiple-processes/about.py
+ User's Home Directory:       /Users/macbeth
+ Terminal Environment:        VS Code
+ Terminal Type:               zsh
+ Git available in PATH:       True 
+======================================================================
+======================================================================
+
+(.venv) (base) macbeth@beths-air streaming-02-multiple-processes % python3 00_check_core.py
+
+======================================================================
+======================================================================
+ Welcome to NW Diagnostics!
+ At: 2023-08-28 at 07:54 PM
+ Operating System: posix Darwin 22.5.0
+ System Architecture: 64bit
+ Number of CPUs: 8
+ Machine Type: arm64
+ Python Version: 3.11.2
+ Python Build Date and Compiler: v3.11.2:878ead1ac1 with Feb  7 2023 10:02:41
+ Python Implementation: CPython
+ Active pip environment: None
+ Path to Interpreter:         /Users/macbeth/Documents/Streaming Data/Module 2/streaming-02-multiple-processes/.venv/bin/python3
+ Path to virtual environment: /Users/macbeth/Documents/Streaming Data/Module 2/streaming-02-multiple-processes/.venv
+ Current Working Directory:   /Users/macbeth/Documents/Streaming Data/Module 2/streaming-02-multiple-processes
+ Path to source directory:    /Users/macbeth/Documents/Streaming Data/Module 2/streaming-02-multiple-processes
+ Path to script file:         /Users/macbeth/Documents/Streaming Data/Module 2/streaming-02-multiple-processes/00_check_core.py
+ User's Home Directory:       /Users/macbeth
+ Terminal Environment:        VS Code
+ Terminal Type:               zsh
+ Git available in PATH:       True 
+======================================================================
+======================================================================
+
+(.venv) (base) macbeth@beths-air streaming-02-multiple-processes % python3 multiple_processes.py
+2023-08-28 20:04:21,285 - INFO - 
+======================================================================
+STARTING UP.............................
+  Date and Time:    2023-08-28 at 08:04 PM
+  Operating System: posix Darwin 22.5.0
+  Python Version:   3.11.2
+  Path to Interpreter:  /Users/macbeth/Documents/Streaming Data/Module 2/streaming-02-multiple-processes/.venv/bin/python3
+======================================================================
+
+2023-08-28 20:04:21,285 - INFO - Called recreate_database().
+2023-08-28 20:04:21,285 - INFO - Called drop_table().
+2023-08-28 20:04:21,286 - INFO - Table 'pets' dropped successfully.
+2023-08-28 20:04:21,286 - INFO - Called create_table().
+2023-08-28 20:04:21,287 - INFO - Table 'pets' created successfully.
+2023-08-28 20:04:21,345 - INFO - Called process_one().
+2023-08-28 20:04:21,345 - INFO -   Called insert_pet() with process=P1, name=Ace, breed=Dog.
+2023-08-28 20:04:21,345 - INFO - Called process_two().
+2023-08-28 20:04:21,345 - INFO -   Called insert_pet() with process=P2, name=Cooper, breed=Rabbit.
+2023-08-28 20:04:21,346 - INFO - Called process_three().
+2023-08-28 20:04:21,346 - INFO -   Called insert_pet() with process=P3, name=Emma, breed=Rabbit.
+2023-08-28 20:04:24,353 - INFO -   Called insert_pet() with process=P1, name=Buddy, breed=Dog.
+2023-08-28 20:04:26,558 - ERROR - ERROR while P3 inserting pet Emma: database is locked
+2023-08-28 20:04:26,559 - INFO -   Called insert_pet() with process=P3, name=Felix, breed=Cat.
+2023-08-28 20:04:26,566 - ERROR - ERROR while P2 inserting pet Cooper: database is locked
+2023-08-28 20:04:26,567 - INFO -   Called insert_pet() with process=P2, name=Dingo, breed=Dog.
+(.venv) (base) macbeth@beths-air streaming-02-multiple-processes % python3 multiple_processes.py
+2023-08-28 20:04:57,698 - INFO - 
+======================================================================
+STARTING UP.............................
+  Date and Time:    2023-08-28 at 08:04 PM
+  Operating System: posix Darwin 22.5.0
+  Python Version:   3.11.2
+  Path to Interpreter:  /Users/macbeth/Documents/Streaming Data/Module 2/streaming-02-multiple-processes/.venv/bin/python3
+======================================================================
+
+2023-08-28 20:04:57,698 - INFO - Called recreate_database().
+2023-08-28 20:04:57,698 - INFO - Called drop_table().
+2023-08-28 20:04:57,700 - INFO - Table 'pets' dropped successfully.
+2023-08-28 20:04:57,700 - INFO - Called create_table().
+2023-08-28 20:04:57,700 - INFO - Table 'pets' created successfully.
+2023-08-28 20:04:57,737 - INFO - Called process_one().
+2023-08-28 20:04:57,737 - INFO - Called process_two().
+2023-08-28 20:04:57,737 - INFO -   Called insert_pet() with process=P1, name=Ace, breed=Dog.
+2023-08-28 20:04:57,737 - INFO -   Called insert_pet() with process=P2, name=Cooper, breed=Rabbit.
+2023-08-28 20:04:57,737 - INFO - Called process_three().
+2023-08-28 20:04:57,737 - INFO -   Called insert_pet() with process=P3, name=Emma, breed=Rabbit.
+2023-08-28 20:04:58,743 - INFO -   Called insert_pet() with process=P2, name=Dingo, breed=Dog.
+2023-08-28 20:05:00,767 - INFO -   Called insert_pet() with process=P3, name=Felix, breed=Cat.
+2023-08-28 20:05:02,855 - INFO -   Called insert_pet() with process=P1, name=Buddy, breed=Dog.
+(.venv) (base) macbeth@beths-air streaming-02-multiple-processes % python3 multiple_processes.py
+2023-08-28 20:05:21,241 - INFO - 
+======================================================================
+STARTING UP.............................
+  Date and Time:    2023-08-28 at 08:05 PM
+  Operating System: posix Darwin 22.5.0
+  Python Version:   3.11.2
+  Path to Interpreter:  /Users/macbeth/Documents/Streaming Data/Module 2/streaming-02-multiple-processes/.venv/bin/python3
+======================================================================
+
+2023-08-28 20:05:21,241 - INFO - Called recreate_database().
+2023-08-28 20:05:21,241 - INFO - Called drop_table().
+(.venv) (base) macbeth@beths-air streaming-02-multiple-processes % python3 multiple_processes.py
+2023-08-28 20:06:51,081 - INFO - 
+======================================================================
+STARTING UP.............................
+  Date and Time:    2023-08-28 at 08:06 PM
+  Operating System: posix Darwin 22.5.0
+  Python Version:   3.11.2
+  Path to Interpreter:  /Users/macbeth/Documents/Streaming Data/Module 2/streaming-02-multiple-processes/.venv/bin/python3
+======================================================================
+
+2023-08-28 20:06:51,081 - INFO - Called recreate_database().
+2023-08-28 20:06:51,081 - INFO - Called drop_table().
+2023-08-28 20:06:51,082 - INFO - Table 'pets' dropped successfully.
+2023-08-28 20:06:51,082 - INFO - Called create_table().
+2023-08-28 20:06:51,083 - INFO - Table 'pets' created successfully.
+2023-08-28 20:06:51,124 - INFO - Called process_two().
+2023-08-28 20:06:51,124 - INFO - Called process_one().
+2023-08-28 20:06:51,124 - INFO -   Called insert_pet() with process=P2, name=Cooper, breed=Rabbit.
+2023-08-28 20:06:51,124 - INFO -   Called insert_pet() with process=P1, name=Ace, breed=Dog.
+2023-08-28 20:06:51,124 - INFO -   Called insert_pet() with process=P1, name=Buddy, breed=Dog.
+2023-08-28 20:06:51,125 - INFO -   Called insert_pet() with process=P2, name=Dingo, breed=Dog.
+2023-08-28 20:06:51,126 - INFO - Called process_three().
+2023-08-28 20:06:51,126 - INFO -   Called insert_pet() with process=P3, name=Emma, breed=Rabbit.
+2023-08-28 20:06:51,126 - INFO -   Called insert_pet() with process=P3, name=Felix, breed=Cat.
+2023-08-28 20:06:51,131 - INFO - 
+SUCCESS: All processes successfully completed!
+
+Now - increase the task duration (representing 
+      the time the task has the database 
+      tied up during an insert statement).
+How well do multiple, concurrent processes share a database 
+    when each task takes more time? 
+How can multiple processes share a resource
+    without interfering with each other?
+
+(.venv) (base) macbeth@beths-air streaming-02-multiple-processes % 

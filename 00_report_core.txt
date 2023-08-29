@@ -1,0 +1,25 @@
+
+======================================================================
+======================================================================
+ Welcome to NW Diagnostics!
+ At: 2023-08-28 at 07:54 PM
+ Operating System: posix Darwin 22.5.0
+ System Architecture: 64bit
+ Number of CPUs: 8
+ Machine Type: arm64
+ Python Version: 3.11.2
+ Python Build Date and Compiler: v3.11.2:878ead1ac1 with Feb  7 2023 10:02:41
+ Python Implementation: CPython
+ Active pip environment: None
+ Path to Interpreter:         /Users/macbeth/Documents/Streaming Data/Module 2/streaming-02-multiple-processes/.venv/bin/python3
+ Path to virtual environment: /Users/macbeth/Documents/Streaming Data/Module 2/streaming-02-multiple-processes/.venv
+ Current Working Directory:   /Users/macbeth/Documents/Streaming Data/Module 2/streaming-02-multiple-processes
+ Path to source directory:    /Users/macbeth/Documents/Streaming Data/Module 2/streaming-02-multiple-processes
+ Path to script file:         /Users/macbeth/Documents/Streaming Data/Module 2/streaming-02-multiple-processes/00_check_core.py
+ User's Home Directory:       /Users/macbeth
+ Terminal Environment:        VS Code
+ Terminal Type:               zsh
+ Git available in PATH:       True 
+======================================================================
+======================================================================
+
