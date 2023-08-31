@@ -6,6 +6,7 @@
 
 The goal of this project is to practice working with concurrent processes with shared resources.
 
+Olympic medal dataset (dataset_olympics.csv) from https://www.kaggle.com/datasets/bhanupratapbiswas/olympic-data.
 
 
 > Multiple processes accessing a shared resource concurrently
