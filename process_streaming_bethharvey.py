@@ -23,6 +23,7 @@ import csv
 import socket
 import time
 import logging
+import multiprocessing
 
 # Set up basic configuration for logging
 
@@ -38,6 +39,7 @@ PORT = 9999
 ADDRESS_TUPLE = (HOST, PORT)
 INPUT_FILE_NAME = "dataset_olympics.csv"
 OUTPUT_FILE_NAME = 'out9.txt'
+COUNTER_FILE_NAME = "medal_count.csv"
 
 # Define program functions (bits of reusable code)
 
@@ -98,13 +100,49 @@ def stream_row(input_file_name, address_tuple, output_file_name):
                 ID, Name, Sex, Age, Height, Weight, Team, NOC, Games, Year, Season, City, Sport, Event, Medal = row
 
                 # Write the transformed data to the output file
-                writer.writerow([ID, Name, Sex, Age, Height, Weight, Team, NOC, Games, Year, Season, City, Sport, Event, Medal])
+                writer.writerow([ID, Name, Sex, Age, Height, Weight, Team, NOC, Games, Year, Season, City, Sport, Event, Medal])                  
 
                 # Get message to stream
                 MESSAGE = prepare_message_from_row(row)
                 sock_object.sendto(MESSAGE, address_tuple)
                 logging.info(f"Sent: {MESSAGE} on port {PORT}. Hit CTRL-c to stop.")
                 time.sleep(3) # wait 3 seconds between messages
+
+
+def get_medal_count(input_file_name, counter_file_name):
+    # Count number of medals per athlete and write to csv
+
+    with open(input_file_name, 'r') as input_file:
+        reader = csv.reader(input_file, delimiter = ',')
+
+        # Create empty dictionary to save names and medal counts
+        medal_count_dict = {}
+
+        for row in reader:
+            ID, Name, Sex, Age, Height, Weight, Team, NOC, Games, Year, Season, City, Sport, Event, Medal = row
+
+            # Add to medal count if name already in dictionary
+            if Name in medal_count_dict.keys():
+                medal_count_dict[Name] += 1
+            # Add name to dictionary if not already there
+            else:
+                medal_count_dict[Name] = 1
+
+    # Write dictionary to csv
+    with open(counter_file_name, 'w') as count_file:
+        writer = csv.writer(count_file)
+        for key, value in medal_count_dict.items():
+            writer.writerow([key, value])
+
+
+def process_one():
+    logging.info('Called process_one().')
+    stream_row(INPUT_FILE_NAME, ADDRESS_TUPLE, OUTPUT_FILE_NAME)            
+    
+def process_two():
+    logging.info('Called process_2().')   
+    get_medal_count(INPUT_FILE_NAME, COUNTER_FILE_NAME)
+
 
 # ---------------------------------------------------------------------------
 # If this is the script we are running, then call some functions and execute code!
@@ -114,7 +152,12 @@ if __name__ == "__main__":
     try:
         logging.info("===============================================")
         logging.info("Starting fake streaming process.")
-        stream_row(INPUT_FILE_NAME, ADDRESS_TUPLE, OUTPUT_FILE_NAME)
+        p1 = multiprocessing.Process(target = process_one)
+        p2 = multiprocessing.Process(target = process_two)
+
+        p1.start()
+        p2.start()
+
         logging.info("Streaming complete!")
         logging.info("===============================================")
     except Exception as e:
